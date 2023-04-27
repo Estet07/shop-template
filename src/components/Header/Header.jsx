@@ -15,14 +15,12 @@ const Header = () => {
             <NavLink to="/" className={activeClass}>Home</NavLink>
             <NavLink to="/account" className={activeClass}>Account</NavLink>
             <NavLink to="/catalog" className={activeClass}>Shop</NavLink>
+            <NavLink to="/contacts" className={activeClass}>Contacts</NavLink>
           </nav>
           <div className={styles.icons}>
-            <NavLink to="/contacts" className={styles.icon}>
+            <a href="/" className={styles.icon}>
               <img src="/images/profile-icon.png" alt="" className={styles.icon}/>
-            </NavLink>
-            {/* <a href="/" className={styles.icon}>
-              <img src="/images/profile-icon.png" alt="" className={styles.icon}/>
-            </a> */}
+            </a>
             <p className={styles.icon}>
               <img src="/images/search-icon.png" alt="" className={styles.icon}/>
             </p>
