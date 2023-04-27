@@ -38,3 +38,7 @@
     border-radius: 50%;
     background-color: bisque;
 }
+
+.active {
+    border-bottom: 1px solid black;
+}
