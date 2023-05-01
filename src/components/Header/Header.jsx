@@ -13,8 +13,8 @@ const Header = () => {
         <div className={styles.wrapper}>
           <nav className={styles.nav}>
             <NavLink to="/" className={activeClass}>Home</NavLink>
-            <NavLink to="/account" className={activeClass}>Account</NavLink>
-            <NavLink to="/catalog" className={activeClass}>Shop</NavLink>
+            <NavLink to="/auth" className={activeClass}>Account</NavLink>
+            <NavLink to="/store" className={activeClass}>Shop</NavLink>
             <NavLink to="/contacts" className={activeClass}>Contacts</NavLink>
           </nav>
           <div className={styles.icons}>
