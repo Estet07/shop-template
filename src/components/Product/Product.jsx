@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './product.module.css'
 
-const Product = ({img, title, date, price, id}) => {
-    const gridView = true
+const Product = ({img, title, date, price, id, gridView}) => {
+    // const gridView = active менять на false
     return (
         <div className={gridView ? styles.card : styles["card-list"]}>
             <img src={img} alt="" className={styles.img} />
