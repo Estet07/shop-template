@@ -14,10 +14,12 @@ const CatalogPage = (props) => {
   const [productOffset, setProductOffset] = useState(0); // с кокого продукта начинать
   const productsPerPage = 4
   const [gridView, setGridView] = useState(true)
+  const [forcePage, setForcePage] = useState(0)
 
   const handlePageClick = (event) => {
     const newOffset = event.selected * productsPerPage;
     setProductOffset(newOffset);
+    setForcePage(event.selected)
   };
 
   const endOffset = productOffset + productsPerPage; // число до которого нам нужно роказывать продукт
@@ -29,8 +31,7 @@ const CatalogPage = (props) => {
     servicesApi.getProducts()
       .then(res => {
         const sortedProducts = res.data.sort((a, b) => a.price - b.price)
-        setProducts(sortedProducts)
-        
+        setProducts(sortedProducts) 
       })
       .catch(err => console.log(err.response.data))
   }, []);
@@ -50,7 +51,9 @@ const CatalogPage = (props) => {
       const sortedNewest = [...products].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
       setProducts(sortedNewest)
     }
-  },[sorted, gridView])
+    setForcePage(0)
+    setProductOffset(0)
+  },[sorted])
 
   return (
     <div>
@@ -79,12 +82,17 @@ const CatalogPage = (props) => {
       </div>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Next"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel=""
         renderOnZeroPageCount={null}
+        containerClassName={styles["pagination-wrapper"]}
+        pageLinkClassName={styles["pagination-page"]}
+        nextClassName={styles["pagination-next"]}
+        activeLinkClassName={styles["pagination-active"]}
+        forcePage={forcePage}
       />
       <Info />
     </div>
