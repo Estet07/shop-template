@@ -4,7 +4,9 @@ import SingleProductCard from '../../components/SingleProductCard/SingleProductC
 const SingleProductPage = () => {
     return (
         <div>
-            <SingleProductCard/>
+            <SingleProductCard
+                
+            />
         </div>
     );
 };
