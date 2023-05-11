@@ -13,13 +13,13 @@ const SingleProductCard = (props) => {
     
     useEffect(() => {
         document.documentElement.scroll({
-          top: "0",
-          behavior: "smooth"
+            top: "0",
+            behavior: "smooth"
         });
         servicesApi.getProduct(id).then((res) => {
           setProduct(res.data);
         });
-      }, []);
+    }, []);
 
     const date = new Date(product.createdAt);
     const options = { day: "numeric", month: "short", year: "numeric" };
@@ -41,7 +41,7 @@ const SingleProductCard = (props) => {
                                 <span>{quantity}</span>
                             <button className={styles["quantity-control"]} onClick={() => setQuantity(quantity + 1)}>+</button>
                         </div>
-                        <button className={styles.add} onClick={() => dispatch(addToCart(product))} >
+                        <button className={styles.add} onClick={() => dispatch(addToCart({...product, quantity}))} >
                             Add To Cart
                         </button>
                     </div>

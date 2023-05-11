@@ -58,8 +58,8 @@ const RegisterForm = ({ styles }) => {
         />
       </div>
       <div className={styles.control}>
-        <label htmlFor="password" className={styles.label}>
-          Password
+        <label htmlFor="text" className={styles.label}>
+          Login
         </label>
         <input
           type="text"
