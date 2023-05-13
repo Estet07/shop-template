@@ -29,6 +29,7 @@
 }
 .product-wrapper {
     width: 40%;
+    flex-direction: column;
 }
 .product-wrapper span {
     float: right;
@@ -38,9 +39,11 @@
     font-weight: 500;
     margin-bottom: 15px;
 }
-.product-subtotal {
+
+.product-name {
     margin: 20px 0;
 }
+
 .product-total span {
     font-size: 24px;
     font-weight: 700;
