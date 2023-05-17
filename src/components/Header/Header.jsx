@@ -42,14 +42,6 @@ const Header = () => {
                 }
               />
             </NavLink>
-            {/* <p className={styles.icon}>
-              <span className={styles.quantity}>1</span>
-              <img
-                src="/images/basket-icon.png "
-                alt=""
-                className={styles.icon}
-              />
-            </p> */}
           </div>
           { isOpen && <Modal /> }
         </div>

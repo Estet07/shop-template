@@ -7,6 +7,7 @@ import styles from "./modal.module.css";
 const Modal = () => {
   const products = useSelector(state => state.cart.productsCart)
   const dispatch = useDispatch()
+  const sum = useSelector(state => state.cart.sum)
   
   return (
     <div className={styles.wrapper}>
@@ -33,7 +34,7 @@ const Modal = () => {
         </div>
         <div className={styles.bottom}>
           <div className={styles.total}>
-            <p className={styles.subtotal}>Subtotal</p> Rs. {getTotalPrice(products)}
+            <p className={styles.subtotal}>Subtotal</p> Rs. {sum}
           </div>
           <div className={styles.line}></div>
           <Link to="/cart" className={styles.link}
@@ -51,9 +52,5 @@ const Modal = () => {
     </div>
   );
 };
-
-function getTotalPrice(products) {
-  return products.reduce((acc, product) => acc + product.price, 0);
-}
 
 export default Modal;
