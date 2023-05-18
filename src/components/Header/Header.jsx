@@ -20,7 +20,8 @@ const Header = () => {
             <NavLink to="/" className={activeClass}>Home</NavLink>
             <NavLink to="/auth" className={activeClass}>Account</NavLink>
             <NavLink to="/store" className={activeClass}>Shop</NavLink>
-            <NavLink to="/contacts" className={activeClass}>Contacts</NavLink>
+            <NavLink to="/contacts" className={activeClass}>Contact</NavLink>
+            <NavLink to="/add" className={activeClass}>AddProduct</NavLink>
           </nav>
           <div className={styles.icons}>
             <a href="/" className={styles.icon}>

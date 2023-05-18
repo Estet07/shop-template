@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const cardStyle = {
   style: {
@@ -24,6 +25,7 @@ const CheckoutForm = () => {
   const stripe = useStripe()
   const elements = useElements()
   const [clientSecret, setClientSecret] = useState()
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.post("https://whispering-river-87788.herokuapp.com/api/create-payment-intent", {
@@ -39,7 +41,15 @@ const CheckoutForm = () => {
         card: elements.getElement(CardElement)
       }
     })
-    .then(res => console.log(res))
+    .then(res => {
+      if (res.error) {
+        alert(res.error.message);
+      } else {
+        alert("оплата прошла успешно")
+        navigate("/store");
+      }
+      console.log(res)
+    })
   }
   
     return (
@@ -56,17 +66,12 @@ const CheckoutForm = () => {
         <div className={styles["product-wrapper"]}>
         <p className={styles["product-title"]}> Product  <span>Subtotal</span> </p>
         {products.map(product => (
-            <div>
+            <div key={product.id}>
               <p className={styles["product-name"]}> {product.title} - {product.price} X {product.quantity} шт. <span>{product.price * product.quantity}</span> </p>
             </div>
             ))}
-        {/* <p className={styles["product-subtotal"]}>  Asgaard sofa  <span>Rs. 250000</span> </p> */}
-        <p className={styles["product-total"]}> Total  <span>{sum}</span> </p>
-            
-          
+            <p className={styles["product-total"]}> Total  <span>{sum}</span> </p>
           </div>
-        
-      
       </div>
       </>
     );
